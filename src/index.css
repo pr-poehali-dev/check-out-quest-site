@@ -37,6 +37,11 @@
     /* Квестовые цвета */
     --quest-yellow: #EAB308;
     --quest-orange: #FF6B00;
+    
+    /* Цвета дыма */
+    --smoke-light: rgba(180, 180, 180, 0.1);
+    --smoke-medium: rgba(160, 160, 160, 0.15);
+    --smoke-dark: rgba(140, 140, 140, 0.2);
   }
  
   .dark {
@@ -148,4 +153,33 @@
 
 .short-circuit {
   animation: shortCircuit 0.5s;
+}
+
+/* Эффекты для дыма */
+@keyframes smokeFloat {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+  90% { opacity: 0.2; }
+  100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+}
+
+.smoke-particle {
+  position: absolute;
+  background: radial-gradient(circle, var(--smoke-light) 0%, var(--smoke-medium) 50%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(8px);
+  transform-origin: center center;
+}
+
+.smoke-slow {
+  animation: smokeFloat 10s ease-out infinite;
+}
+
+.smoke-medium {
+  animation: smokeFloat 7s ease-out infinite;
+}
+
+.smoke-fast {
+  animation: smokeFloat 5s ease-out infinite;
 }
