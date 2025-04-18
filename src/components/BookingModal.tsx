@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { useBookingStore } from '@/store/bookingStore';
+import { useBooking } from '@/contexts/BookingContext';
 import { format } from 'date-fns';
 import { useToast } from '@/components/ui/use-toast';
 
@@ -25,7 +25,7 @@ const BookingModal: React.FC<BookingModalProps> = ({
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
   const { toast } = useToast();
-  const addBooking = useBookingStore((state) => state.addBooking);
+  const { addBooking } = useBooking();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

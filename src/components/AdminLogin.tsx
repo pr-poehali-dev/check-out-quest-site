@@ -3,7 +3,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, Di
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { useAdminStore } from '@/store/adminStore';
+import { useAdmin } from '@/contexts/AdminContext';
 import { useToast } from '@/components/ui/use-toast';
 
 interface AdminLoginProps {
@@ -13,15 +13,15 @@ interface AdminLoginProps {
 }
 
 const AdminLogin: React.FC<AdminLoginProps> = ({ isOpen, onClose, onSuccess }) => {
-  const [login, setLogin] = useState('');
+  const [loginInput, setLoginInput] = useState('');
   const [password, setPassword] = useState('');
   const { toast } = useToast();
-  const loginAdmin = useAdminStore((state) => state.login);
+  const { login } = useAdmin();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!login || !password) {
+    if (!loginInput || !password) {
       toast({
         title: "Ошибка!",
         description: "Заполните все поля",
@@ -30,7 +30,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ isOpen, onClose, onSuccess }) =
       return;
     }
     
-    const success = loginAdmin(login, password);
+    const success = login(loginInput, password);
     
     if (success) {
       toast({
@@ -63,8 +63,8 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ isOpen, onClose, onSuccess }) =
             <Label htmlFor="login" className="text-quest-orange">Логин</Label>
             <Input
               id="login"
-              value={login}
-              onChange={(e) => setLogin(e.target.value)}
+              value={loginInput}
+              onChange={(e) => setLoginInput(e.target.value)}
               className="bg-black/50 border-quest-yellow text-quest-orange"
               required
             />

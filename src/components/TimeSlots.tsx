@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { useBookingStore } from '@/store/bookingStore';
+import { useBooking } from '@/contexts/BookingContext';
 import { format } from 'date-fns';
 
 interface TimeSlotsProps {
@@ -13,7 +13,7 @@ const availableTimes = ['12:00', '13:30', '15:00', '16:30', '18:00', '19:30', '2
 
 const TimeSlots: React.FC<TimeSlotsProps> = ({ selectedDate, questType, onSelectTime }) => {
   const [disabledTimes, setDisabledTimes] = useState<string[]>([]);
-  const bookings = useBookingStore((state) => state.bookings);
+  const { bookings } = useBooking();
   
   useEffect(() => {
     if (!selectedDate) return;

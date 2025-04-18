@@ -4,14 +4,13 @@ import QuestCard from '@/components/QuestCard';
 import AdminLogin from '@/components/AdminLogin';
 import AdminPanel from '@/components/AdminPanel';
 import { Button } from '@/components/ui/button';
-import { useAdminStore } from '@/store/adminStore';
+import { useAdmin } from '@/contexts/AdminContext';
 
 const HomePage: React.FC = () => {
   const [adminLoginOpen, setAdminLoginOpen] = useState(false);
   const [adminPanelOpen, setAdminPanelOpen] = useState(false);
   
-  const currentAdmin = useAdminStore((state) => state.currentAdmin);
-  const adminPhone = useAdminStore((state) => state.phone);
+  const { currentAdmin, phone: adminPhone } = useAdmin();
   
   const handleAdminSuccess = () => {
     setAdminLoginOpen(false);

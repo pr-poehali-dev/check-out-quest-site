@@ -5,8 +5,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
-import { useAdminStore } from '@/store/adminStore';
-import { useBookingStore, BookingTime } from '@/store/bookingStore';
+import { useAdmin } from '@/contexts/AdminContext';
+import { useBooking, BookingTime } from '@/contexts/BookingContext';
 import { format } from 'date-fns';
 import { useToast } from '@/components/ui/use-toast';
 import { Textarea } from '@/components/ui/textarea';
@@ -28,13 +28,8 @@ const AdminPanel: React.FC<AdminPanelProps> = ({ isOpen, onClose }) => {
   const [adminPhone, setAdminPhone] = useState<string>('');
   
   const { toast } = useToast();
-  const currentAdmin = useAdminStore((state) => state.currentAdmin);
-  const bookings = useBookingStore((state) => state.bookings);
-  const updateBooking = useBookingStore((state) => state.updateBooking);
-  const confirmBooking = useBookingStore((state) => state.confirmBooking);
-  const cancelBooking = useBookingStore((state) => state.cancelBooking);
-  const adminStorePhone = useAdminStore((state) => state.phone);
-  const updatePhone = useAdminStore((state) => state.updatePhone);
+  const { currentAdmin, phone: adminStorePhone, updatePhone } = useAdmin();
+  const { bookings, updateBooking, confirmBooking, cancelBooking } = useBooking();
   
   React.useEffect(() => {
     if (isOpen) {
