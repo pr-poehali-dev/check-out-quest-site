@@ -33,22 +33,6 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
@@ -79,14 +63,6 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
@@ -97,5 +73,127 @@
 
   body {
     @apply bg-background text-foreground;
+    background-image: url('/brick-wall.jpg');
+    background-size: cover;
+    background-attachment: fixed;
   }
+}
+
+.character {
+  display: inline-block;
+}
+
+.quest-title span {
+  animation-delay: calc(var(--i) * 0.5s);
+}
+
+.brick-wall {
+  background-image: url('/brick-wall.jpg');
+  background-size: cover;
+  position: relative;
+}
+
+.black-yellow-stripe {
+  background: repeating-linear-gradient(
+    45deg,
+    #000000,
+    #000000 20px,
+    #FFDF00 20px,
+    #FFDF00 40px
+  );
+}
+
+.danger-zone-bg {
+  position: relative;
+}
+
+.danger-zone-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/radiation.png'), url('/gas-mask.png');
+  background-position: left bottom, right top;
+  background-repeat: no-repeat;
+  background-size: 200px;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.green-smoke {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(43, 192, 43, 0.05));
+  animation: smoke-drift 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.artifact-zone-bg {
+  position: relative;
+}
+
+.artifact-zone-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/gold-medal.png'), url('/statue.png');
+  background-position: left bottom, center center;
+  background-repeat: no-repeat;
+  background-size: 200px, 300px;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.white-smoke {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.05));
+  animation: smoke-drift 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tea-zone-bg {
+  position: relative;
+}
+
+.tea-zone-bg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/tea-table.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 400px;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* Убираем стили проскрола */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FFDF00;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF7F00;
 }
