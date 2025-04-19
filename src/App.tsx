@@ -7,6 +7,7 @@ import { BookingProvider } from "@/contexts/BookingContext";
 import { AdminProvider } from "@/contexts/AdminContext";
 import ThemeAwareSmokeEffect from "@/components/ThemeAwareSmokeEffect";
 import CompanyLogo from "@/components/CompanyLogo";
+import BackgroundWrapper from "@/components/BackgroundWrapper";
 import HomePage from "./pages/HomePage";
 import DangerZone from "./pages/DangerZone";
 import ArtifactQuest from "./pages/ArtifactQuest";
@@ -21,17 +22,19 @@ const App = () => (
       <AdminProvider>
         <BookingProvider>
           <BrowserRouter>
-            <ThemeAwareSmokeEffect />
-            <CompanyLogo />
-            <Toaster />
-            <Sonner />
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/danger-zone" element={<DangerZone />} />
-              <Route path="/artifact-quest" element={<ArtifactQuest />} />
-              <Route path="/tea-zone" element={<TeaZone />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <BackgroundWrapper>
+              <ThemeAwareSmokeEffect />
+              <CompanyLogo />
+              <Toaster />
+              <Sonner />
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/danger-zone" element={<DangerZone />} />
+                <Route path="/artifact-quest" element={<ArtifactQuest />} />
+                <Route path="/tea-zone" element={<TeaZone />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </BackgroundWrapper>
           </BrowserRouter>
         </BookingProvider>
       </AdminProvider>

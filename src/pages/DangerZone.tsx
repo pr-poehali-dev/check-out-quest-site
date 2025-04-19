@@ -5,19 +5,24 @@ import { Link } from 'react-router-dom';
 
 const DangerZone: React.FC = () => {
   return (
-    <div className="min-h-screen relative">
-      {/* Фоновое изображение */}
-      <img 
-        src="https://cdn.poehali.dev/files/56dfd1f4-313e-408f-8ce6-8f09da29b74c.jpg" 
-        alt="Опасная зона" 
-        className="quest-background-image"
-      />
-      
-      {/* Затемнение для лучшей читаемости */}
-      <div className="quest-overlay"></div>
+    <div className="min-h-screen relative flex items-center justify-center py-12">
+      {/* Фоновое изображение квеста поверх основного фона */}
+      <div className="fixed inset-0 z-1">
+        <img 
+          src="https://cdn.poehali.dev/files/61bc9cfc-c20e-425f-b41a-062bd971c29a.jpeg" 
+          alt="Кирпичная стена" 
+          className="w-full h-full object-cover opacity-90"
+        />
+        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+        <img 
+          src="https://cdn.poehali.dev/files/1d28a7cb-2ca1-4729-80b6-8c716774806d.jpg" 
+          alt="Опасная зона" 
+          className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay"
+        />
+      </div>
       
       {/* Основной контент */}
-      <div className="container mx-auto py-12 px-4 relative z-20">
+      <div className="container mx-auto px-4 relative z-20">
         <div className="max-w-4xl mx-auto">
           <Link to="/" className="text-white hover:text-quest-orange mb-8 block">
             ← Вернуться на главную
@@ -27,10 +32,18 @@ const DangerZone: React.FC = () => {
             Опасная зона
           </h1>
           
-          <Card className="bg-black bg-opacity-70 border-none p-6 mb-8">
+          <Card className="bg-black bg-opacity-80 border-none p-6 mb-8 backdrop-blur">
             <h2 className="text-2xl text-quest-orange font-bold mb-4">
               Выживание в мире после катастрофы
             </h2>
+            
+            <div className="mb-6">
+              <img 
+                src="https://cdn.poehali.dev/files/1d28a7cb-2ca1-4729-80b6-8c716774806d.jpg" 
+                alt="Опасная зона" 
+                className="w-full h-64 object-cover rounded-lg mb-4"
+              />
+            </div>
             
             <p className="text-gray-300 mb-4">
               Ядерная катастрофа изменила мир навсегда. Вы — одни из немногих выживших, 

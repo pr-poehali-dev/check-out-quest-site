@@ -7,13 +7,6 @@ import { Link } from 'react-router-dom';
 const HomePage: React.FC = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 relative">
-      {/* Красный кирпичный фон */}
-      <div className="fixed inset-0 red-brick-wall opacity-90 z-0"></div>
-      
-      {/* Затемнение для лучшей читаемости */}
-      <div className="fixed inset-0 bg-black bg-opacity-30 z-1"></div>
-      
-      {/* Контент страницы */}
       <div className="container mx-auto z-20 relative">
         <BlinkingLogo />
         
@@ -25,21 +18,21 @@ const HomePage: React.FC = () => {
           <QuestCard 
             title="Опасная зона" 
             description="Выживи в радиоактивном пространстве, найди противоядие и спасись!"
-            image="https://cdn.poehali.dev/files/56dfd1f4-313e-408f-8ce6-8f09da29b74c.jpg"
+            image="https://cdn.poehali.dev/files/1d28a7cb-2ca1-4729-80b6-8c716774806d.jpg"
             link="/danger-zone"
           />
           
           <QuestCard 
             title="В поисках артефакта" 
             description="Разгадай тайну древнего артефакта и обрети невероятную силу!"
-            image="https://cdn.poehali.dev/files/5e8b46f2-c6d2-4a4f-bb7c-8cec280c3aba.jpg"
+            image="https://cdn.poehali.dev/files/224bb71c-f2e2-49e0-b2c9-37b9d6428872.jpg"
             link="/artifact-quest"
           />
           
           <QuestCard 
             title="Чайная зона" 
             description="Расслабься после приключений в нашей аутентичной чайной комнате"
-            image="https://cdn.poehali.dev/files/23fd148d-0c64-4e2e-b544-d2b59c4e046e.jpg"
+            image="https://cdn.poehali.dev/files/bfe34242-a7f3-41d6-8f06-ab2319e21423.jpg"
             link="/tea-zone"
           />
         </div>
