@@ -14,7 +14,7 @@ const BackgroundWrapper: React.FC<BackgroundWrapperProps> = ({ children }) => {
     return (
       <div className="fixed inset-0 z-0">
         <img 
-          src="https://cdn.poehali.dev/files/61bc9cfc-c20e-425f-b41a-062bd971c29a.jpeg" 
+          src="https://cdn.poehali.dev/files/e2f2a7c3-a94d-44cf-bc7e-6d17444c517c.jpg" 
           alt="Кирпичная стена"
           className="absolute inset-0 w-full h-full object-cover opacity-90"
         />
