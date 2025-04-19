@@ -212,5 +212,5 @@
 
 /* Затемнение поверх фона для читабельности контента */
 .quest-overlay {
-  @apply fixed inset-0 bg-black bg-opacity-50 z-1;
+  @apply fixed inset-0 bg-black bg-opacity-50 z-[1];
 }
