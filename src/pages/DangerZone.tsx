@@ -1,88 +1,77 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import QuestCalendar from '@/components/QuestCalendar';
-import TimeSlots from '@/components/TimeSlots';
-import BookingModal from '@/components/BookingModal';
+import React from 'react';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import { Card } from '@/components/ui/card';
+import { Link } from 'react-router-dom';
 
 const DangerZone: React.FC = () => {
-  const [selectedDate, setSelectedDate] = useState<Date | undefined>(new Date());
-  const [selectedTime, setSelectedTime] = useState<string | null>(null);
-  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
-  
-  const handleDateSelect = (date: Date | undefined) => {
-    setSelectedDate(date);
-    setSelectedTime(null);
-  };
-  
-  const handleTimeSelect = (time: string) => {
-    setSelectedTime(time);
-    setIsBookingModalOpen(true);
-  };
-  
   return (
-    <div className="min-h-screen relative brick-wall danger-zone-bg">
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="green-smoke"></div>
-      </div>
-      
-      <div className="absolute top-0 left-0 w-full h-6 black-yellow-stripe"></div>
-      
-      <div className="container mx-auto px-4 py-12 relative z-10">
-        <Link to="/" className="inline-flex items-center text-quest-orange hover:text-quest-yellow mb-8">
-          <ArrowLeft className="mr-2" size={20} />
-          Вернуться на главную
-        </Link>
-        
-        <div className="mt-6 mb-12">
-          <div className="w-full max-w-5xl mx-auto bg-black/80 p-8 rounded-lg border border-quest-yellow">
-            <h1 className="text-4xl font-bold text-quest-danger mb-6 text-center animate-flicker-light">ХОРРОР КВЕСТ!</h1>
-            
-            <div className="text-quest-orange mb-8">
-              <h2 className="text-2xl font-semibold mb-4">Сюжет:</h2>
-              <p className="text-lg">
-                Вы группа сталкеров, чьи жизни погрязли в долгах, и вот лучик света – проходит молва, что за дневник одного из ученого, готовы заплатить огромные деньги. Вы не раздумываете и бросаетесь на поиски этого дневника, прямо в логово опасности.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-              <div className="space-y-4">
-                <div className="text-quest-orange">
-                  <h3 className="text-xl font-semibold mb-2">Информация:</h3>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li>Команда от 4–10 человек</li>
-                    <li>Цена за 1 человека, указана под временем бронирования</li>
-                    <li>Возраст: 18+, 14+, 13+ в сопровождение</li>
-                  </ul>
-                </div>
-                
-                <QuestCalendar onSelectDate={handleDateSelect} />
-              </div>
-              
-              <div className="space-y-4">
-                <h3 className="text-xl font-semibold text-quest-orange mb-4">Выберите время:</h3>
-                
-                <TimeSlots
-                  selectedDate={selectedDate}
-                  questType="danger"
-                  onSelectTime={handleTimeSelect}
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div className="absolute bottom-0 left-0 w-full h-6 black-yellow-stripe"></div>
-      </div>
-      
-      <BookingModal
-        isOpen={isBookingModalOpen}
-        onClose={() => setIsBookingModalOpen(false)}
-        questType="danger"
-        selectedDate={selectedDate}
-        selectedTime={selectedTime}
+    <div className="min-h-screen relative">
+      {/* Фоновое изображение */}
+      <img 
+        src="https://cdn.poehali.dev/files/56dfd1f4-313e-408f-8ce6-8f09da29b74c.jpg" 
+        alt="Опасная зона" 
+        className="quest-background-image"
       />
+      
+      {/* Затемнение для лучшей читаемости */}
+      <div className="quest-overlay"></div>
+      
+      {/* Основной контент */}
+      <div className="container mx-auto py-12 px-4 relative z-20">
+        <div className="max-w-4xl mx-auto">
+          <Link to="/" className="text-white hover:text-quest-orange mb-8 block">
+            ← Вернуться на главную
+          </Link>
+          
+          <h1 className="text-4xl md:text-5xl font-bold text-quest-orange mb-6">
+            Опасная зона
+          </h1>
+          
+          <Card className="bg-black bg-opacity-70 border-none p-6 mb-8">
+            <h2 className="text-2xl text-quest-orange font-bold mb-4">
+              Выживание в мире после катастрофы
+            </h2>
+            
+            <p className="text-gray-300 mb-4">
+              Ядерная катастрофа изменила мир навсегда. Вы — одни из немногих выживших, 
+              оказавшихся в эпицентре заражённой территории. Ваша задача — найти противоядие 
+              и покинуть опасную зону до того, как радиация заберёт ваши жизни.
+            </p>
+            
+            <div className="border-l-4 border-quest-orange pl-4 my-6">
+              <p className="text-gray-300 italic">
+                "Мы создали этот квест для любителей экстремальных приключений и 
+                поклонников постапокалиптических сюжетов. Захватывающая история с множеством 
+                головоломок не оставит равнодушным никого."
+              </p>
+              <p className="text-quest-orange mt-2">— Команда Check_Out</p>
+            </div>
+            
+            <ul className="space-y-2 text-gray-300 mb-6">
+              <li className="flex items-center">
+                <span className="text-quest-orange mr-2">⚠️</span>
+                <span>Сложность: 8/10</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-quest-orange mr-2">⏱️</span>
+                <span>Длительность: 90 минут</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-quest-orange mr-2">👥</span>
+                <span>Участники: 2-6 человек</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-quest-orange mr-2">💰</span>
+                <span>Стоимость: от 3000₽</span>
+              </li>
+            </ul>
+            
+            <Button className="bg-quest-orange hover:bg-orange-700 text-white">
+              Забронировать
+            </Button>
+          </Card>
+        </div>
+      </div>
     </div>
   );
 };

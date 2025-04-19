@@ -5,7 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { BookingProvider } from "@/contexts/BookingContext";
 import { AdminProvider } from "@/contexts/AdminContext";
-import SmokeEffect from "@/components/SmokeEffect";
+import ThemeAwareSmokeEffect from "@/components/ThemeAwareSmokeEffect";
+import CompanyLogo from "@/components/CompanyLogo";
 import HomePage from "./pages/HomePage";
 import DangerZone from "./pages/DangerZone";
 import ArtifactQuest from "./pages/ArtifactQuest";
@@ -19,11 +20,11 @@ const App = () => (
     <TooltipProvider>
       <AdminProvider>
         <BookingProvider>
-          {/* Добавляем эффект дыма на все страницы */}
-          <SmokeEffect />
-          <Toaster />
-          <Sonner />
           <BrowserRouter>
+            <ThemeAwareSmokeEffect />
+            <CompanyLogo />
+            <Toaster />
+            <Sonner />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/danger-zone" element={<DangerZone />} />

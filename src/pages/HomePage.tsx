@@ -1,111 +1,80 @@
-import React, { useState } from 'react';
+import React from 'react';
 import BlinkingLogo from '@/components/BlinkingLogo';
-import QuestCard from '@/components/QuestCard';
-import AdminLogin from '@/components/AdminLogin';
-import AdminPanel from '@/components/AdminPanel';
+import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { useAdmin } from '@/contexts/AdminContext';
+import { Link } from 'react-router-dom';
 
 const HomePage: React.FC = () => {
-  const [adminLoginOpen, setAdminLoginOpen] = useState(false);
-  const [adminPanelOpen, setAdminPanelOpen] = useState(false);
-  
-  const { currentAdmin, phone: adminPhone } = useAdmin();
-  
-  const handleAdminSuccess = () => {
-    setAdminLoginOpen(false);
-    setAdminPanelOpen(true);
-  };
-  
   return (
-    <div className="min-h-screen relative animate-day-night-cycle brick-wall">
-      <div className="absolute inset-0 pointer-events-none opacity-30">
-        <div className="w-full h-full bg-black"></div>
-      </div>
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 relative">
+      {/* Красный кирпичный фон */}
+      <div className="fixed inset-0 red-brick-wall opacity-90 z-0"></div>
       
-      <div className="absolute top-0 left-0 w-full h-6 black-yellow-stripe"></div>
+      {/* Затемнение для лучшей читаемости */}
+      <div className="fixed inset-0 bg-black bg-opacity-30 z-1"></div>
       
-      <div className="container mx-auto px-4 py-12 relative z-10">
-        {/* Админ панель */}
-        <div className="absolute top-8 right-4">
-          {currentAdmin ? (
-            <Button 
-              onClick={() => setAdminPanelOpen(true)}
-              className="bg-quest-yellow text-black hover:bg-quest-orange"
-            >
-              Панель администратора
-            </Button>
-          ) : (
-            <Button 
-              onClick={() => setAdminLoginOpen(true)}
-              variant="ghost"
-              className="text-quest-orange hover:text-quest-yellow"
-            >
-              Администратор
-            </Button>
-          )}
-        </div>
+      {/* Контент страницы */}
+      <div className="container mx-auto z-20 relative">
+        <BlinkingLogo />
         
-        {/* Главный контент */}
-        <div className="mt-10 space-y-12">
-          <BlinkingLogo />
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-            <div className="flex-1"></div>
-            <div className="bg-black/70 p-6 rounded-lg border border-quest-yellow">
-              <h3 className="text-xl font-bold text-quest-orange mb-4">Информация</h3>
-              <p className="text-quest-orange">
-                По вопросам бронирования вы можете связаться с администратором по номеру {adminPhone},
-                или в сообщениях группы ВК: <a href="https://vk.com/kvest_chekcout" target="_blank" rel="noopener noreferrer" className="text-quest-yellow hover:text-quest-orange">https://vk.com/kvest_chekcout</a>
-              </p>
-            </div>
-          </div>
-          
-          <div className="bg-black/70 p-6 rounded-lg border border-quest-yellow max-w-2xl mx-auto">
-            <h3 className="text-xl font-bold text-quest-orange mb-4 text-center">Важно!</h3>
-            <p className="text-quest-orange text-center">
-              Вход в состоянии алкогольного и наркотического опьянения строго запрещен! Также на квесте вам предстоит поползать, возьмите удобную обувь и одежду!
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-            <QuestCard
-              image="/gas-mask.png"
-              title="Опасная зона"
-              link="/danger-zone"
-              alt="Квест Опасная зона"
-            />
-            
-            <QuestCard
-              image="/gold-coin.png"
-              title="В поисках артефакта"
-              link="/artifact-quest"
-              alt="Квест В поисках артефакта"
-            />
-            
-            <QuestCard
-              image="/tea-zone.png"
-              title="Чайная зона"
-              link="/tea-zone"
-              alt="Чайная зона"
-            />
-          </div>
-        </div>
+        <h1 className="text-4xl font-bold text-white text-center mb-8 neon-text">
+          Захватывающие квесты в Москве
+        </h1>
         
-        <div className="absolute bottom-0 left-0 w-full h-6 black-yellow-stripe"></div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <QuestCard 
+            title="Опасная зона" 
+            description="Выживи в радиоактивном пространстве, найди противоядие и спасись!"
+            image="https://cdn.poehali.dev/files/56dfd1f4-313e-408f-8ce6-8f09da29b74c.jpg"
+            link="/danger-zone"
+          />
+          
+          <QuestCard 
+            title="В поисках артефакта" 
+            description="Разгадай тайну древнего артефакта и обрети невероятную силу!"
+            image="https://cdn.poehali.dev/files/5e8b46f2-c6d2-4a4f-bb7c-8cec280c3aba.jpg"
+            link="/artifact-quest"
+          />
+          
+          <QuestCard 
+            title="Чайная зона" 
+            description="Расслабься после приключений в нашей аутентичной чайной комнате"
+            image="https://cdn.poehali.dev/files/23fd148d-0c64-4e2e-b544-d2b59c4e046e.jpg"
+            link="/tea-zone"
+          />
+        </div>
       </div>
-      
-      <AdminLogin 
-        isOpen={adminLoginOpen} 
-        onClose={() => setAdminLoginOpen(false)} 
-        onSuccess={handleAdminSuccess}
-      />
-      
-      <AdminPanel 
-        isOpen={adminPanelOpen} 
-        onClose={() => setAdminPanelOpen(false)} 
-      />
     </div>
+  );
+};
+
+interface QuestCardProps {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+}
+
+const QuestCard: React.FC<QuestCardProps> = ({ title, description, image, link }) => {
+  return (
+    <Card className="overflow-hidden border-none shadow-xl transition-all hover:scale-105 bg-black bg-opacity-80">
+      <div className="h-48 overflow-hidden">
+        <img 
+          src={image} 
+          alt={title} 
+          className="w-full h-full object-cover" 
+        />
+      </div>
+      <div className="p-4">
+        <h3 className="text-xl font-bold text-quest-orange mb-2">{title}</h3>
+        <p className="text-gray-300 mb-4">{description}</p>
+        <Link to={link}>
+          <Button className="w-full bg-quest-orange hover:bg-orange-700 text-white">
+            Подробнее
+          </Button>
+        </Link>
+      </div>
+    </Card>
   );
 };
 

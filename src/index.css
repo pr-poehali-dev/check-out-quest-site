@@ -39,9 +39,19 @@
     --quest-orange: #FF6B00;
     
     /* Цвета дыма */
-    --smoke-light: rgba(180, 180, 180, 0.1);
-    --smoke-medium: rgba(160, 160, 160, 0.15);
-    --smoke-dark: rgba(140, 140, 140, 0.2);
+    --smoke-light: rgba(180, 180, 180, 0.2);
+    --smoke-medium: rgba(160, 160, 160, 0.25);
+    --smoke-dark: rgba(140, 140, 140, 0.3);
+    
+    /* Цвета для кислотного дыма */
+    --smoke-acid-light: rgba(150, 255, 100, 0.2);
+    --smoke-acid-medium: rgba(120, 255, 80, 0.25);
+    --smoke-acid-dark: rgba(100, 255, 50, 0.3);
+    
+    /* Цвета для золотого дыма */
+    --smoke-gold-light: rgba(255, 215, 100, 0.2);
+    --smoke-gold-medium: rgba(255, 200, 80, 0.25);
+    --smoke-gold-dark: rgba(255, 180, 50, 0.3);
   }
  
   .dark {
@@ -84,7 +94,18 @@
   }
 }
 
-/* Brick Wall Pattern */
+/* Красная кирпичная стена */
+.red-brick-wall {
+  background-color: #8B2A19;
+  background-image: linear-gradient(335deg, #A43024 23px, transparent 23px),
+    linear-gradient(155deg, #A43024 23px, transparent 23px),
+    linear-gradient(335deg, #A43024 23px, transparent 23px),
+    linear-gradient(155deg, #A43024 23px, transparent 23px);
+  background-size: 58px 58px;
+  background-position: 0px 2px, 4px 35px, 29px 31px, 34px 6px;
+}
+
+/* Обычная кирпичная стена (черная) */
 .brick-wall {
   background-color: #000;
   background-image: linear-gradient(335deg, #222 23px, transparent 23px),
@@ -182,4 +203,14 @@
 
 .smoke-fast {
   animation: smokeFloat 5s ease-out infinite;
+}
+
+/* Стили для полноэкранного фона */
+.quest-background-image {
+  @apply fixed inset-0 w-full h-full object-cover z-0;
+}
+
+/* Затемнение поверх фона для читабельности контента */
+.quest-overlay {
+  @apply fixed inset-0 bg-black bg-opacity-50 z-1;
 }

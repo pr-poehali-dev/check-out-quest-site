@@ -1,62 +1,96 @@
 import React from 'react';
+import { Button } from '@/components/ui/button';
+import { Card } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
-import { Card, CardContent } from '@/components/ui/card';
-import { ArrowLeft } from 'lucide-react';
 
 const TeaZone: React.FC = () => {
   return (
-    <div className="min-h-screen relative brick-wall tea-zone-bg">
-      <div className="absolute top-0 left-0 w-full h-6 black-yellow-stripe"></div>
+    <div className="min-h-screen relative">
+      {/* Фоновое изображение */}
+      <img 
+        src="https://cdn.poehali.dev/files/23fd148d-0c64-4e2e-b544-d2b59c4e046e.jpg" 
+        alt="Чайная зона" 
+        className="quest-background-image"
+      />
       
-      <div className="container mx-auto px-4 py-12 relative z-10">
-        <Link to="/" className="inline-flex items-center text-quest-orange hover:text-quest-yellow mb-8">
-          <ArrowLeft className="mr-2" size={20} />
-          Вернуться на главную
-        </Link>
-        
-        <div className="mt-6 mb-12">
-          <Card className="w-full max-w-3xl mx-auto bg-black/80 border-quest-yellow">
-            <CardContent className="p-8">
-              <h1 className="text-4xl font-bold text-quest-tea mb-6 text-center">Чайная зона</h1>
-              
-              <div className="text-quest-orange space-y-6">
-                <p className="text-lg">
-                  Чайная зона – эта уютная комната с большим столом и мягкими диванами в самом квесте. После увлекательного приключения, полны эмоций и загадок, приглашаем вас в уютную чайную зону, где можно отдохнуть и поделиться впечатлениями!
-                </p>
-                
-                <p className="text-lg">
-                  Приходите и насладитесь временем в нашей чайной зоне — местом для отдыха после ярких приключений!
-                </p>
-                
-                <div className="bg-quest-yellow/10 p-6 rounded-lg border border-quest-yellow">
-                  <h3 className="text-xl font-semibold mb-4 text-quest-yellow">Стоимость и условия:</h3>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li>Аренда чайной зоны на 1ч стоит 1000₽</li>
-                    <li>Мы предоставляем только место для банкета! Посуда, еда, напитки – все с вас!</li>
-                    <li>Мы предоставим: микроволновку, куллер с водой и чайник, в котором можно вскипятить воду</li>
-                  </ul>
-                </div>
-                
-                <div className="bg-red-900/20 p-6 rounded-lg border border-red-900">
-                  <h3 className="text-xl font-semibold mb-4 text-red-400">Ограничения:</h3>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li>Строго запрещен вход с алкоголем</li>
-                    <li>Запрещается курить в помещении</li>
-                    <li>Запрещается использовать бенгальские огни и другие свечи, кроме обычных парафиновых свечей (они разрешены)</li>
-                  </ul>
-                </div>
-                
-                <div className="text-center mt-8">
-                  <p className="text-lg font-semibold text-quest-yellow">
-                    Если вас заинтересовала данная услуга, не забудьте сообщить о ней оператору!
-                  </p>
-                </div>
+      {/* Затемнение для лучшей читаемости */}
+      <div className="quest-overlay"></div>
+      
+      {/* Основной контент */}
+      <div className="container mx-auto py-12 px-4 relative z-20">
+        <div className="max-w-4xl mx-auto">
+          <Link to="/" className="text-white hover:text-quest-orange mb-8 block">
+            ← Вернуться на главную
+          </Link>
+          
+          <h1 className="text-4xl md:text-5xl font-bold text-green-500 mb-6">
+            Чайная зона
+          </h1>
+          
+          <Card className="bg-black bg-opacity-70 border-none p-6 mb-8">
+            <h2 className="text-2xl text-green-500 font-bold mb-4">
+              Расслабьтесь после приключений
+            </h2>
+            
+            <p className="text-gray-300 mb-4">
+              После захватывающих квестов приглашаем вас расслабиться в нашей аутентичной 
+              чайной комнате. Здесь вы сможете насладиться изысканными сортами чая, 
+              обсудить пройденные испытания и поделиться впечатлениями в уютной атмосфере.
+            </p>
+            
+            <div className="border-l-4 border-green-500 pl-4 my-6">
+              <p className="text-gray-300 italic">
+                "Мы создали особое пространство, где время замедляет свой ход. 
+                Чайная церемония — это не просто чаепитие, а настоящее искусство, 
+                которое помогает восстановить душевное равновесие."
+              </p>
+              <p className="text-green-500 mt-2">— Команда Check_Out</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+              <div className="bg-black bg-opacity-50 p-4 rounded-lg">
+                <h3 className="text-green-500 font-bold mb-2">Чайное меню</h3>
+                <ul className="text-gray-300 space-y-1">
+                  <li>• Китайский улун</li>
+                  <li>• Японский матча</li>
+                  <li>• Индийский чай масала</li>
+                  <li>• Травяные сборы</li>
+                  <li>• Фруктовые чаи</li>
+                </ul>
               </div>
-            </CardContent>
+              
+              <div className="bg-black bg-opacity-50 p-4 rounded-lg">
+                <h3 className="text-green-500 font-bold mb-2">Дополнительно</h3>
+                <ul className="text-gray-300 space-y-1">
+                  <li>• Восточные сладости</li>
+                  <li>• Лёгкие закуски</li>
+                  <li>• Настольные игры</li>
+                  <li>• Фотозона</li>
+                  <li>• Комфортная зона отдыха</li>
+                </ul>
+              </div>
+            </div>
+            
+            <ul className="space-y-2 text-gray-300 mb-6">
+              <li className="flex items-center">
+                <span className="text-green-500 mr-2">🍵</span>
+                <span>Стоимость: от 600₽ с человека</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-green-500 mr-2">⏱️</span>
+                <span>Длительность: не ограничена</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-green-500 mr-2">👥</span>
+                <span>Вместимость: до 15 человек</span>
+              </li>
+            </ul>
+            
+            <Button className="bg-green-600 hover:bg-green-700 text-white">
+              Забронировать стол
+            </Button>
           </Card>
         </div>
-        
-        <div className="absolute bottom-0 left-0 w-full h-6 black-yellow-stripe"></div>
       </div>
     </div>
   );
