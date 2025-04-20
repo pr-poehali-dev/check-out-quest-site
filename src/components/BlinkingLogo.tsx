@@ -105,8 +105,10 @@ const BlinkingLogo: React.FC = () => {
                 `}
                 style={{
                   textShadow: blinkingStates[index] 
-                    ? '0 0 5px #FF6B00, 0 0 10px #FF6B00, 0 0 15px #FF6B00, 0 0 20px #FF6B00' 
-                    : 'none'
+                    ? '0 0 5px #FF6B00, 0 0 10px #FF6B00, 0 0 15px #FF6B00, 0 0 20px #FF6B00, 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #fff' 
+                    : 'none',
+                  WebkitTextStroke: '1px #fff',
+                  textStroke: '1px #fff'
                 }}
               >
                 {letter}
