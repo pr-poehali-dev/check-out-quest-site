@@ -2,6 +2,8 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+import QuestCalendar from '@/components/QuestCalendar';
+import TimeSlots from '@/components/TimeSlots';
 
 const ArtifactQuest: React.FC = () => {
   return (
@@ -33,9 +35,9 @@ const ArtifactQuest: React.FC = () => {
           </h1>
           
           <Card className="bg-black bg-opacity-80 border-none p-6 mb-8 backdrop-blur">
-            <h2 className="text-2xl text-quest-yellow font-bold mb-4">
-              Захватывающее приключение в старинном замке
-            </h2>
+            <div className="inline-block bg-blue-600 text-white px-4 py-1 rounded-md mb-4 font-bold">
+              ДЕТЕКТИВНЫЙ КВЕСТ!
+            </div>
             
             <div className="mb-6">
               <img 
@@ -45,39 +47,42 @@ const ArtifactQuest: React.FC = () => {
               />
             </div>
             
-            <p className="text-gray-300 mb-4">
-              Старинная легенда гласит, что в этом заброшенном замке спрятан древний артефакт, 
-              обладающий невероятной силой. Многие искатели приключений пытались его найти, 
-              но никто не вернулся. Сможете ли вы разгадать тайну древних и обрести могущество?
-            </p>
+            <h2 className="text-2xl text-quest-yellow font-bold mb-4">
+              Сюжет
+            </h2>
             
-            <div className="border-l-4 border-quest-yellow pl-4 my-6">
-              <p className="text-gray-300 italic">
-                "Этот квест — настоящее испытание для любителей загадок и головоломок. 
-                Мы воссоздали атмосферу таинственного замка с множеством секретов, 
-                запутанных коридоров и волшебных предметов."
-              </p>
-              <p className="text-quest-yellow mt-2">— Команда Check_Out</p>
-            </div>
+            <p className="text-gray-300 mb-6">
+              Вы команда следопытов, которые отправляются на поиски утерянного артефакта. 
+              Все сводки говорят о том, что артефакт был украден и спрятан в старом подвале 
+              под музеем. Но местный детектив не может разгадать загадки и найти улики, 
+              поэтому именно вам предстоит помочь ему в этом нелегком деле!
+            </p>
             
             <ul className="space-y-2 text-gray-300 mb-6">
               <li className="flex items-center">
-                <span className="text-quest-yellow mr-2">🧩</span>
-                <span>Сложность: 7/10</span>
-              </li>
-              <li className="flex items-center">
-                <span className="text-quest-yellow mr-2">⏱️</span>
-                <span>Длительность: 75 минут</span>
-              </li>
-              <li className="flex items-center">
                 <span className="text-quest-yellow mr-2">👥</span>
-                <span>Участники: 2-5 человек</span>
+                <span>Команда от 4–10 человек</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-quest-yellow mr-2">🧩</span>
+                <span>Возраст: 9+, квест проходит с ведущим, в роли доброго детектива Шляпсона</span>
               </li>
               <li className="flex items-center">
                 <span className="text-quest-yellow mr-2">💰</span>
-                <span>Стоимость: от 2800₽</span>
+                <span>Стоимость: до 21:00 - 900₽, после 21:00 - 1000₽ за билет</span>
               </li>
             </ul>
+            
+            <h3 className="text-xl text-quest-yellow font-bold mb-4">Выберите дату и время</h3>
+            
+            <div className="mb-6">
+              <QuestCalendar />
+            </div>
+            
+            <div className="mb-6">
+              <h4 className="text-lg text-quest-yellow mb-3">Доступное время:</h4>
+              <TimeSlots questName="В поисках артефакта" />
+            </div>
             
             <Button className="bg-quest-yellow hover:bg-yellow-600 text-black">
               Забронировать

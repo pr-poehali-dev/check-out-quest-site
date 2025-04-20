@@ -2,6 +2,8 @@ import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
+import QuestCalendar from '@/components/QuestCalendar';
+import TimeSlots from '@/components/TimeSlots';
 
 const DangerZone: React.FC = () => {
   return (
@@ -33,9 +35,9 @@ const DangerZone: React.FC = () => {
           </h1>
           
           <Card className="bg-black bg-opacity-80 border-none p-6 mb-8 backdrop-blur">
-            <h2 className="text-2xl text-quest-orange font-bold mb-4">
-              Выживание в мире после катастрофы
-            </h2>
+            <div className="inline-block bg-red-600 text-white px-4 py-1 rounded-md mb-4 font-bold">
+              ХОРРОР КВЕСТ!
+            </div>
             
             <div className="mb-6">
               <img 
@@ -45,39 +47,41 @@ const DangerZone: React.FC = () => {
               />
             </div>
             
-            <p className="text-gray-300 mb-4">
-              Ядерная катастрофа изменила мир навсегда. Вы — одни из немногих выживших, 
-              оказавшихся в эпицентре заражённой территории. Ваша задача — найти противоядие 
-              и покинуть опасную зону до того, как радиация заберёт ваши жизни.
-            </p>
+            <h2 className="text-2xl text-quest-orange font-bold mb-4">
+              Сюжет
+            </h2>
             
-            <div className="border-l-4 border-quest-orange pl-4 my-6">
-              <p className="text-gray-300 italic">
-                "Мы создали этот квест для любителей экстремальных приключений и 
-                поклонников постапокалиптических сюжетов. Захватывающая история с множеством 
-                головоломок не оставит равнодушным никого."
-              </p>
-              <p className="text-quest-orange mt-2">— Команда Check_Out</p>
-            </div>
+            <p className="text-gray-300 mb-6">
+              Вы группа сталкеров, чьи жизни погрязли в долгах, и вот лучик света – проходит молва, 
+              что за дневник одного из ученого, готовы заплатить огромные деньги. Вы не раздумываете 
+              и бросаетесь на поиски этого дневника, прямо в логово опасности.
+            </p>
             
             <ul className="space-y-2 text-gray-300 mb-6">
               <li className="flex items-center">
-                <span className="text-quest-orange mr-2">⚠️</span>
-                <span>Сложность: 8/10</span>
-              </li>
-              <li className="flex items-center">
-                <span className="text-quest-orange mr-2">⏱️</span>
-                <span>Длительность: 90 минут</span>
-              </li>
-              <li className="flex items-center">
                 <span className="text-quest-orange mr-2">👥</span>
-                <span>Участники: 2-6 человек</span>
+                <span>Команда от 4–10 человек</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-quest-orange mr-2">⚠️</span>
+                <span>Возраст: 18+, 14+, 13+ в сопровождении</span>
               </li>
               <li className="flex items-center">
                 <span className="text-quest-orange mr-2">💰</span>
-                <span>Стоимость: от 3000₽</span>
+                <span>Стоимость: до 21:00 - 900₽, после 21:00 - 1000₽ за билет</span>
               </li>
             </ul>
+            
+            <h3 className="text-xl text-quest-orange font-bold mb-4">Выберите дату и время</h3>
+            
+            <div className="mb-6">
+              <QuestCalendar />
+            </div>
+            
+            <div className="mb-6">
+              <h4 className="text-lg text-quest-orange mb-3">Доступное время:</h4>
+              <TimeSlots questName="Опасная зона" />
+            </div>
             
             <Button className="bg-quest-orange hover:bg-orange-700 text-white">
               Забронировать
